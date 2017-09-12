@@ -1,0 +1,182 @@
+{
+  "settings": {
+    "title": "192 Nausikka",
+    "stats": [
+      {
+        "name": "Integrity",
+        "initial": 10,
+        "max": 20
+      },
+      {
+        "name": "Albedo",
+        "initial": 6
+      },
+      {
+        "name": "Gravity",
+        "initial": 10
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "name": "A Dream",
+      "consequences": [
+        {
+          "conditions": [
+            {
+              "type": "default"
+            }
+          ],
+          "text": [
+            "You are 192 Nausikaa. Princess of Iron Silicates, Lady of Magnesium. Dweller of the void.",
+            "Two pieces of rock orbit you; the maids. The first, Ligeia; the second, Syntyche. Contented and mute, they attract you — as much as you attract them. They are bound by tradition and  by the echoing vibrations you emitted when they were born: “Not. Forget. Give. Life.”",
+            "You are disturbed by a rumbling and a trembling that propagate from deep inside your core. A presence pulsating inside you, silently. It casts light onto the depths of your stony mind. Upward shrills; grinding rock; spinning particles; roars that stop when they reach the vacuum outside you. In a shocked stupor, you mumble ideas that are not yours. An order: “Prepare. Move. Consort. Approach. Poseidon.” Then, your voice is your own again and you prepare a reply."
+          ],
+          "actions": [
+            {
+              "name": "Silence",
+              "consequences": [
+                {
+                  "conditions": [
+                    {
+                      "type": "default"
+                    }
+                  ],
+                  "effects": [{
+                    "attr": "rotation",
+                    "modifier": -1
+                  }],
+                  "text": ["You go east to Phobos mate"],
+                  "goTo": "next",
+                  "actions": []
+                },
+                {
+                  "conditions": [
+                    {
+                      "type": "stat",
+                      "stat": "integrity",
+                      "value": "5",
+                      "operator": ">"
+                    }
+                  ],
+                  "effects": [
+                    {
+                      "attr": "rotation",
+                      "modifier": 1
+                    }
+                  ],
+                  "text": ["You go east to Phobos and drink some water"],
+                  "goTo": "next",
+                  "actions": []
+                }
+              ]
+            },
+            {
+              "name": "Refuse",
+              "consequences": [
+                {
+                  "conditions": "default",
+                  "text": ["If you go south you will go to Ares."],
+                  "effects": [{
+                    "attr": "gravity",
+                    "modifier": -1
+                  }],
+                  "flags": [
+                    "went south"
+                  ],
+                  "actions": [
+                    {
+                      "name": "Go",
+                      "consequences": [
+                        {
+                          "conditions": "default",
+                          "text": ["You wake up and realise that the dust from your dreams is now covering you. You feel the burden of an ill omen hanging over you. Shaking that feeling away for the moment, you make your way to Poseidon, followed by your silent maids."],
+                          "effects": [],
+                          "goTo": "next",
+                          "flags": [
+                            "angry god"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Stay",
+                      "consequences": [
+                        {
+                          "conditions": "default",
+                          "text": ["Boiling with fury, you turn your back to this dark presence. You feel its equally angry waves burning you from behind, but ignore it for orbits around the sun."],
+                          "effects": [{
+                            "attr": "gravity",
+                            "modifier": -9
+                          }]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "“You. Who?”",
+              "consequences": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Next",
+      "consequences": [
+        {
+          "conditions": [
+            {
+              "type": "default"
+            }
+          ],
+          "text": [
+            "text"
+          ],
+          "actions": [
+            {
+              "name": "Sing",
+              "consequences": [
+                {
+                  "conditions": "default",
+                  "text": ["You wake up and realise that the dust from your dreams is now covering you. You feel the burden of an ill omen hanging over you. Shaking that feeling away for the moment, you make your way to Poseidon, followed by your silent maids."]
+                }
+              ]
+            },
+            {
+              "name": "Speak",
+              "consequences": [
+                {
+                  "conditions": "default",
+                  "text": ["Boiling with fury, you turn your back to this dark presence. You feel its equally angry waves burning you from behind, but ignore it for orbits around the sun."],
+                  "effect": {
+                    "attr": "gravity",
+                    "modifier": -9
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "conditions": [
+            {
+              "type": "flag",
+              "value": "angry god"
+            },
+            {
+              "type": "stat",
+              "stat": "integrity",
+              "value": "5",
+              "operator": ">"
+            }
+          ],
+          "text": ["Next scene"]
+        }
+      ]
+    }
+  ]
+}
